@@ -11,16 +11,16 @@
    - Model is automatically downloaded from Hugging Face when running `app.py`.
 
 3. **Frontend Development**
-   - Built using **Flask** for a simple UI.
+   - Built a simple UI using Jinja templates.
    - Communicates with FastAPI backend to process user queries.
-   - Issue: Clicking 'Ask' rapidly caused server crashes.
+   - User needs to wait a few seconds after clicking ask for the response. In the future a loading animation can be implemented to give a better feedback to the user.
 
 4. **Virtual Environment & Dependency Management**
    - Used **Python `venv`** for environment isolation.
    - Created **`requirements.txt`** for tracking dependencies.
 
 5. **Automated Setup & Execution**
-   - Created `run.sh` to launch **both backend and frontend** using a single command.
+   - Created `run.sh` to launch using a single command.
    - Ensures correct virtual environment activation.
 
 ## Challenges Faced

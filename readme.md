@@ -1,7 +1,7 @@
 # Hotel Booking Data Analytics & QA System
 
 ## Overview
-This project is a **Hotel Booking Data Analytics & Question Answering (QA) System** using **FastAPI** and **Flask**. It analyzes hotel booking data, provides insights, and answers user queries using a **RAG (Retrieval-Augmented Generation) model**.
+This project is a **Hotel Booking Data Analytics & Question Answering (QA) System** using **FastAPI** . It analyzes hotel booking data, provides insights, and answers user queries using a **RAG (Retrieval-Augmented Generation)**.
 
 ## Directory Structure
 ```
@@ -16,10 +16,8 @@ Hotel-Booking-Analytics-QA-System/
 │
 │── backend/                           # FastAPI backend handling analytics & QA
 │   ├── app.py                         # Main API server
-│   ├── speed_test.py                  # Script for testing model response speed
 │
-│── frontend/                          # Flask-based frontend for user interaction
-│   ├── frontend.py                    # Flask server handling user queries
+│── frontend/                           
 │   ├── templates/                     
 │   │   ├── index.html                 # Main UI template
 │
@@ -29,7 +27,6 @@ Hotel-Booking-Analytics-QA-System/
 │── requirements.txt                    # List of required dependencies
 │── README.md                           # Project documentation
 │── run.sh                              # Script to start backend & frontend together
-│── venv/                               # Virtual environment (not pushed to GitHub)
 │── .gitignore                          # Ignore unnecessary files (venv, etc.)
 │── screenshots/                        # Contains UI response screenshots (if included)
 ```
@@ -65,7 +62,6 @@ pip install -r requirements.txt
 
 ## Usage
 - **Backend API (FastAPI)** runs on `http://127.0.0.1:8000`
-- **Frontend (Flask)** runs on `http://127.0.0.1:5000`
 - Ask hotel-related questions using the frontend UI.
 
 ## Analytics & Sample Queries
