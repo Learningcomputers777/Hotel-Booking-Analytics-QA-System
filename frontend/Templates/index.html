@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Query Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #response {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ask a Question</h1>
+    <form id="queryForm">
+        <input type="text" id="query" name="query" placeholder="Enter your query..." required>
+        <button type="submit">Ask</button>
+    </form>
+
+    <div id="response"></div>
+
+    <script>
+        document.getElementById("queryForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let query = document.getElementById("query").value;
+
+            fetch(`/query?query=${encodeURIComponent(query)}`, {  // Use GET request
+                method: "GET",
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").innerText = "Response: " + data.answer;
+            })
+            .catch(error => {
+                document.getElementById("response").innerText = "Error: Could not get response.";
+            });
+        });
+    </script>
+
+</body>
+</html>
