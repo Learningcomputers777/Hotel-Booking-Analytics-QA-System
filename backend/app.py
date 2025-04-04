@@ -1,11 +1,18 @@
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Query
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 import faiss
 import torch
 from huggingface_hub import hf_hub_download
 from llama_cpp import Llama
+from fastapi.responses import JSONResponse
+from fastapi.templating import Jinja2Templates
+import httpx
+
+
+# Setup templates
+templates = Jinja2Templates(directory="../frontend/templates")
 
 # Define base directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -81,11 +88,26 @@ def get_analytics():
 
 # API Endpoint to ask questions using RAG
 @app.get("/ask")
-def ask_question(query: str):
+async def ask_question(query: str):
     answer = generate_response(query)
     return {"query": query, "answer": answer}
+
+@app.get("/")
+def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/query")
+async def query(user_query: str = Query(..., alias="query")):
+    async with httpx.AsyncClient() as client:
+        response = await client.get("http://127.0.0.1:8000/ask", params={"query": user_query})
+
+    if response.status_code == 200:
+        return JSONResponse(content={"answer": response.json().get("answer", "No valid response received.")})
+    else:
+        return JSONResponse(content={"answer": "Error: No valid response received."})
+
 
 # Run FastAPI server
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, port=8000)

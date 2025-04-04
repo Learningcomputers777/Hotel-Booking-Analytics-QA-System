@@ -1,0 +1,63 @@
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Virtual environment
+venv/
+env/
+*.venv
+
+# Dependency files
+pip-log.txt
+pip-delete-this-directory.txt
+Pipfile
+Pipfile.lock
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Logs and debugging
+logs/
+*.log
+*.out
+*.err
+nohup.out
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# FastAPI-specific files
+instance/
+*.db
+*.sqlite3
+
+# Docker files
+docker-compose.override.yml
+.env
+.env.*
+secrets.json
+
+# Cache and build files
+*.egg-info/
+dist/
+build/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Gunicorn logs
+gunicorn.log
+gunicorn-access.log
+gunicorn-error.log
+
+# MyPy and Pytest cache
+.mypy_cache/
+.pytest_cache/
